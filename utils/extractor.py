@@ -26,7 +26,7 @@ supported_architectures = {
 
 
 class Extractor(object):
-    def __init__(self, arch='NASNetMobile'):
+    def __init__(self, arch='ResNet50'):
         """
         image feature extraction class
         :param arch: deep architecture to be used e.g. ResNet

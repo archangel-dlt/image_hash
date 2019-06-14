@@ -13,5 +13,5 @@ if __name__ == '__main__':
 
     img_path = 'cat.jpg'
     hash = hasher.extract(img_path)
-    print(hash.shape)
+    print(hash)
     # the hasher object can be re-used to extract other images
