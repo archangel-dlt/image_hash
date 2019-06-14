@@ -25,7 +25,7 @@ RUN virtualenv --system-site-packages -p python3 .
 
 ADD ./requirements.txt ./
 RUN ./bin/pip install -r requirements.txt
-ADD ./utils ./
+ADD ./utils ./utils
 ADD ./example.py ./
 ADD ./cat.jpg ./
-ENTRYPOINT ["/src/bin/python /src/cat.jpg"]
+CMD ["/src/bin/python", "/src/example.py"]
