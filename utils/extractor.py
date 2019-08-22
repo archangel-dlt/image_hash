@@ -24,7 +24,7 @@ supported_architectures = {
     'Xception': ['xception', [299, 299, 3]]
 }
 augmentation = {
-    'rotation': [-10, 10],  # rotation range
+    'rotation': [-6, 6],  # rotation range
     'flip': True,
     'crop': 0.1  # fraction along each image dimension to be removed
 }
@@ -58,6 +58,10 @@ class Extractor(object):
                          half_crop,
                          (half_crop[0]*2, 0),
                          half_crop*2]
+
+    def __del__(self):
+        del self.model
+        K.clear_session()
 
     def extract(self, img_path):
         """
