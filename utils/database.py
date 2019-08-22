@@ -146,16 +146,14 @@ class H5pyData(object):
                 f.flush()
         else:  # database not exist, create a new one
             with h5.File(self.data_path, 'w') as f:
-                f.create_dataset('feats',
+                f.create_dataset('feats', data=feats,
                                  shape=(n, dim),
                                  maxshape=(None, dim),
                                  dtype=np.float32,
                                  compression='gzip')
-                f['feats'] = feats
-                f.create_dataset('ths',
+
+                f.create_dataset('ths', data=ths,
                                  shape=(n,),
                                  maxshape=(None,),
                                  dtype=np.float32,
                                  compression='gzip')
-                f['ths'] = ths
-                f.flush()

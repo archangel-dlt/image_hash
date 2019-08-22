@@ -25,6 +25,7 @@ parser.add_argument('-s', '--search-index', default=SEARCH_INDEX, help='search i
 import pickle
 from utils.extractor import Extractor
 from utils.database import NumpyData as DatabaseReader
+# from utils.database import H5pyData as DatabaseReader
 
 if __name__ == '__main__':
     args = parser.parse_args()

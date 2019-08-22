@@ -16,7 +16,7 @@ This will return the hash of an image as a vector of float32 numbers (`feat`). I
 Example can be found at [example.py](example.py). It is almost the same as hashing a single image except you provide a list of image paths to the hasher:
 
 ```
-feats, ths = hasher.extract2(list_of_image_paths)
+feats, ths = hasher.extract_batch(list_of_image_paths)
 np.savez('hash_database.npz', feats=feats, ths=ths)
 ```
 This will create a database file (`hash_database.npz`) in numpy format. At the moment we support numpy and hdf5 format however you can use any data format (e.g. sql) to store `feats` and `ths`. Just add a python wrapper class in [utils/database.py](utils/database.py) describing how to read it.
@@ -35,7 +35,7 @@ python check.py -i my_test_image.jpg -d hash_database.npz -s search_index.pkl
 This script (`check.py`) inputs a query image, paths to the database file and the search model. It then tells you if there is a near-duplicated image in the database plus the index of the closest image.
 
 ## TODO
-- ANN search.
+- <s>ANN search.</s>
 - <s>Create docker file.</s>
 - Turn hash (currently numerical) into hex string: dropped as unnecessary.
 - zeromq to save time from loading model into RAM.

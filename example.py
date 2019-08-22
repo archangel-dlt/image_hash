@@ -9,6 +9,7 @@ Tu Bui tb0035@surrey.ac.uk
 import os
 import numpy as np
 from utils.extractor import Extractor
+from utils.database import H5pyData
 
 if __name__ == '__main__':
     hasher = Extractor()
@@ -24,8 +25,11 @@ if __name__ == '__main__':
     np.savez('hash_database.npz', feats=hashes, ths=ths)
 
     # Build search model
+    # Note: it's better to execute this command directly in bash terminal rather calling from this script
     cmd = 'python build_searchtree.py -i hash_database.npz -o search_index.pkl'
     os.system(cmd)
 
     # Check if an image has near-duplicated copy in the database
+    # Note: it's better to execute this command directly in bash terminal rather calling from this script
     cmd = 'python check.py -i cat_neardup.png -d hash_database.npz -s search_index.pkl'
+    os.system(cmd)

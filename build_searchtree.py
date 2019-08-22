@@ -23,6 +23,7 @@ import numpy as np
 import pickle
 from sklearn.neighbors import NearestNeighbors as NN
 from utils.database import NumpyData as DatabaseReader
+# from utils.database import H5pyData as DatabaseReader
 
 if __name__ == '__main__':
     args = parser.parse_args()
