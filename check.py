@@ -12,25 +12,25 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import pickle
+from utils.extractor import Extractor
+from utils.database import get_database_reader
+import argparse
+
 IN = 'cat.jpg'
 DATABASE = '/vol/vssp/cvpnobackup/scratch_4weeks/tb0035/projects/archangel/tmp/hash_database.npz'
 SEARCH_INDEX = '/vol/vssp/cvpnobackup/scratch_4weeks/tb0035/projects/archangel/tmp/search_index.pkl'
 
-import argparse
 parser = argparse.ArgumentParser(description='Input arguments.')
 parser.add_argument('-i', '--input', default=IN, help='image to check')
 parser.add_argument('-d', '--database', default=DATABASE, help='hash database file')
 parser.add_argument('-s', '--search-index', default=SEARCH_INDEX, help='search index file')
 
-import pickle
-from utils.extractor import Extractor
-from utils.database import NumpyData as DatabaseReader
-# from utils.database import H5pyData as DatabaseReader
 
 if __name__ == '__main__':
     args = parser.parse_args()
     print('Loading database ...')
-    db = DatabaseReader(args.database)
+    db = get_database_reader(args.database)
     ths = db.get_thresholds()
 
     print('Loading search index ...')

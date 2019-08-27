@@ -22,7 +22,7 @@ if __name__ == '__main__':
     # hash batch of images and create a hash database
     img_lst = ['samples/cat.jpg', 'samples/airplane1.jpg', 'samples/airplane2.jpg']
     hashes, ths = hasher.extract_batch(img_lst)
-    np.savez('hash_database.npz', feats=hashes, ths=ths)
+    np.savez('hash_database.npz', feats=hashes, ths=ths)  # save as numpy database
 
     # Build search model
     # Note: it's better to execute this command directly in bash terminal rather calling from this script

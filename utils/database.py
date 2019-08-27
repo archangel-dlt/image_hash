@@ -22,6 +22,25 @@ import os
 import numpy as np
 import h5py as h5
 
+supported_database_extensions = ['h5', 'hdf5', 'npz']
+
+
+def get_database_reader(data_path):
+    """
+    automatically determine database type based on file extension
+    Note: please update this method if you create a new database class
+    :param data_path: path to the database
+    :return: a database object
+    """
+    if data_path.endswith('.npz'):
+        print('Numpy database detected.')
+        return NumpyData(data_path, 'r')
+    elif data_path.endswith('.h5') or data_path.endswith('.hdf5'):
+        print('HDF5 database detected.')
+        return H5pyData(data_path, 'r')
+    else:
+        raise TypeError("Error! Database must have extension %s" % supported_database_extensions)
+
 
 class NumpyData(object):
     """
@@ -108,7 +127,10 @@ class H5pyData(object):
 
     def __del__(self):
         if self.mode == 'r':
-            self.data.close()
+            try:
+                self.data.close()
+            except Exception as e:
+                pass
 
     def get_hashes(self):
         """
