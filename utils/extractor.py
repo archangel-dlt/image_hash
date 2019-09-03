@@ -5,6 +5,7 @@ Created on 14 Jun 2019 11:29
 Tu Bui tb0035@surrey.ac.uk
 
 """
+import tensorflow as tf
 from tensorflow.keras import applications as apps
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing import image

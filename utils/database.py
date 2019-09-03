@@ -89,6 +89,7 @@ class NumpyData(object):
         :return: 0
         """
         ths = ths.squeeze()
+        feats = feats + np.zeros((1, 1))  # make sure feats have shape NxD
         assert self.mode == 'w', "Error! Function append() can only be used in write mode."
         if os.path.isfile(self.data_path):  # append to existing database
             data = np.load(self.data_path)
@@ -154,6 +155,7 @@ class H5pyData(object):
         :return: 0
         """
         ths = ths.squeeze()
+        feats = feats + np.zeros((1, 1))  # make sure feats have shape NxD
         assert self.mode == 'w', "Error! Function append() can only be used in write mode."
         n, dim = feats.shape
         if os.path.isfile(self.data_path):  # append to existing database

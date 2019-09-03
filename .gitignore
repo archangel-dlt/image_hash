@@ -1,2 +1,10 @@
 *.pyc
+*~
+.vscode/*
 .idea/*
+data/*
+db*
+aux/*
+logs/*
+.DS_Store
+env/
