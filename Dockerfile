@@ -9,9 +9,8 @@ RUN apt-get update && \
 
 RUN apt-get install -y python3-dev python3-pip python-qt4 
 RUN pip3 install -U pip
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
-RUN apt-get install openssh-server sssd -y && mkdir /var/run/sshd
+RUN rm /usr/bin/python && \
+	ln -s /usr/bin/python3 /usr/bin/python
 
 RUN apt-get autoremove -y && apt-get autoclean -y
 
@@ -19,7 +18,7 @@ WORKDIR /src
 
 ADD ./requirements.txt ./
 RUN pip install -r requirements.txt
-ADD ./utils ./utils
+ADD ./utils/*.py ./utils/
 ADD ./samples ./samples
 ADD ./*.py ./
 ADD ./*.png ./

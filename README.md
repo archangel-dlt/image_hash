@@ -34,9 +34,9 @@ Here the search model is saved as `search_index.pkl`. As users add more images i
 
 ## Check near-duplication
 ```
-python check.py -i my_test_image.jpg -d hash_database.npz -s search_index.pkl
+python check.py -i my_test_image.jpg -d hash_database.npz -s search_index.pkl -l image_list.txt
 ```
-This script [check.py](check.py) inputs a query image, paths to the database file and the search model. It then tells you if there is a near-duplicated image in the database plus the index of the closest image.
+This script [check.py](check.py) inputs a query image, paths to the database file, the search model and a text file containing full paths of all images in the database. It then tells you if there is a near-duplicated image in the database plus the index and path of the closest image.
 
 
 ## TODO

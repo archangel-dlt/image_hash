@@ -92,7 +92,7 @@ def geometry_matching(im1, im2, debug=False):
             for im in images:
                 new_im.paste(im, (x_offset, 0))
                 x_offset += im.size[0]
-            new_im.save('res_match.png')
+            new_im.save('res_nomatch.png')
         return 0, len(good)
 
 
