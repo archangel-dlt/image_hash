@@ -75,6 +75,8 @@ def neardup_detect(query, hasher, image_list, thresholds, search_index, verbose=
         else:
             msg += '\nGeometry not matched. No duplication.'
             duplicate_decision = False
+        inliners, total = (inliners1, total1) if inliners1 >= inliners2 else (inliners2, total2)
+        msg += '\n%d out of %d keypoints matched.' % (inliners, total)
     if verbose:
         print(msg)
     return duplicate_decision, candidate_id, candidate_path
