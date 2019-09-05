@@ -37,6 +37,7 @@ Here the search model is saved as `search_index.pkl`. As users add more images i
 python check.py -i my_test_image.jpg -d hash_database.npz -s search_index.pkl -l image_list.txt
 ```
 This script [check.py](check.py) inputs a query image, paths to the database file, the search model and a text file containing full paths of all images in the database. It then tells you if there is a near-duplicated image in the database plus the index and path of the closest image.
+
 Note: `image_list.txt` is needed for the geometry matching step in `check.py`. This file contains the full paths to all images in the database (no header). Check [example.py](example.py) for the way to create it.
 
 ## TODO
